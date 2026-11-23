@@ -129,11 +129,17 @@
 
           return `
             <article class="card">
+              <a
+  href="${Loader.escapeHtml(row.link)}"
+  target="_blank"
+  rel="noopener noreferrer"
+>
               ${image ? `<img src="${Loader.escapeHtml(image)}" alt="" loading="lazy" />` : ''}
               <div class="badges"><span class="pill site">${Loader.escapeHtml(row.site_title)}</span></div>
               <h2>${Loader.escapeHtml(row.title || '(untitled)')}</h2>
               <div class="meta">${Loader.escapeHtml(Loader.formatDate(row.date))}</div>
               <p>${Loader.escapeHtml(description)}</p>
+              </a>
             </article>
           `;
         }).join('');
