@@ -31,7 +31,7 @@ WHERE post_type = 'page'
 
 -- Hide posts or pages whose title or body indicates food-related content.
 UPDATE posts SET isPublic = 0
-WHERE LOWER(title) LIKE '%food%'
+WHERE LOWER(title) LIKE '%food%';
 
 -- Exclude all posts from the arbitrary source site 'site1' from the public feed.
 UPDATE posts SET isPublic = 0 WHERE site_id = 'site1';
