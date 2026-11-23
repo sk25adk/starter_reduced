@@ -161,6 +161,18 @@ loading error is caught and shown as a failure message.
   link, the current card markup does not make the card clickable.
 - All matching posts are displayed; there is no pagination or search box.
 
+# Change Log
+
+- **Excluded the `site1` source site from the public feed.** This editorial
+  rule runs in `curation.sql` after the shared data cache is loaded: an
+  `UPDATE posts SET isPublic = 0 WHERE site_id = 'site1'` statement marks every
+  post from `site1` as not public. The exclusion happens in the in-browser
+  SQLite database view before `site.html` builds its filter buttons and card
+  feed. The source site's filter remains available, but its public post count
+  is zero and selecting it displays no cards. This is an editorial decision
+  that affects which content is shown; it does not delete or restructure the
+  underlying cached WordPress data.
+
 # Takeaway
 
 `site.html` is a small data-driven web page: it loads a prepared dataset,
